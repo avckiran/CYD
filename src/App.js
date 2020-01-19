@@ -4,16 +4,16 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Home from './screens/Home';
 
-const App = () => {
+const App = () => {    
     return (
         <Router>
             <Switch>
-                <Route exact path='/' component = { Home } />
-                <Route exact path='/login' component= { Login } />
-                <Route exact path='/signup' component= { Signup } />
+                <Route exact path='/' component={ Login } />
+                <Route exact path='/signup' component={ Signup } />
+                <Route exact path='/home' component={ Home } />
             </Switch>
         </Router>
-        )
+    )
 
 }
 
