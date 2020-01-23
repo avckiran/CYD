@@ -5,7 +5,7 @@ import Spinner from '../components/Spinner';
 
 const Home = () => {
     const [authenticated, setAuthenticated] = useState('');
-    
+
     auth.onAuthStateChanged(user => {
         if(user) {
             setAuthenticated('true');
