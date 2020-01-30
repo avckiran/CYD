@@ -29,7 +29,7 @@ const Signup = () => {
         .catch(err => setError(err.message));
     }
 
-    return signedUp ? <Redirect to='/home' /> : (
+    return signedUp ? <Redirect to='/options' /> : (
         <div className="container mt-2">
             <div className="d-flex flex-row-reverse justify-content-center ">
                 <div className="w-auto p-5 mt-5">
@@ -44,7 +44,7 @@ const Signup = () => {
                         </div>
                         <button className="btn btn-primary btn-block mt-3">Sign up</button>
                     </form>
-                    <div className="mt-4">Already have an account ? <Link to="/">Login</Link></div>
+                    <div className="mt-4">Already have an account ? <Link to="/login">Login</Link></div>
                 </div>
             </div>
         </div>

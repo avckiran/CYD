@@ -9,6 +9,7 @@ const Home = () => {
     auth.onAuthStateChanged(user => {
         if(user) {
             setAuthenticated('true');
+            console.log(user);
         } else {
             setAuthenticated('false');
         }
@@ -28,7 +29,7 @@ const Home = () => {
             <h4 className="text-primary text-center">Home Screen</h4>
         </div>
     } else {
-        return <Redirect to='/' />
+        return <Redirect to='/login' />
     }
 }
 
