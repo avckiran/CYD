@@ -2,6 +2,17 @@ body {
     color: #3f3f3f !important;
     -webkit-font-smoothing: antialiased;
 }
+
+label {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
 #root {
     height: 100vh;
 }
@@ -25,6 +36,10 @@ body {
     height: 100%;
 }
 
+#home-screen {
+    height: 100%;
+}
+
 .brand-logo {
     width: 60vw;
 }
@@ -33,4 +48,9 @@ body {
     padding: 10px;
     margin: 10px;
     background: #f3f3f3;
+}
+
+.day {
+    font-weight: normal;
+    font-size: 1rem;
 }

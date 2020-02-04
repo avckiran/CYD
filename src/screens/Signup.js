@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { auth, db } from '../config/Fire';
+import { auth } from '../config/Fire';
 
 const Signup = () => {
     const [formData, setFormData] = useState({

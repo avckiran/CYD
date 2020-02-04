@@ -1,8 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Redirect, Link } from 'react-router-dom';
+import { auth } from '../config/Fire';
 
 const Welcome = () => {
-    return (
+    const [authenticated, setAuthenticated] = useState(null);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if(user) {
+                setAuthenticated(true);
+            } else {
+                setAuthenticated(false);
+            }
+        });
+    }, []);
+
+    return authenticated ? <Redirect to='/home'/> : (
         <div id='welcome-screen' className="container d-flex justify-content-start flex-column">
             <div className='text-center m-3 mt-5'>
                 <p className="display-4 text-primary">
