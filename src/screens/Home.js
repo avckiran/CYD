@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { auth } from '../config/Fire';
+import { auth, db } from '../config/Fire';
 import Spinner from '../components/Spinner';
+import NoQuestions from '../components/NoQuestions';
 
 const Home = () => {
     const [authenticated, setAuthenticated] = useState('');
+    const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if(user) {
                 setAuthenticated('true');
+                const ref = db.collection(`users/${user.uid}/questions`)
+                ref.get().then(data => setQuestions(data.docs)).catch(err => console.error(err.message));
             } else {
                 setAuthenticated('false');
             }
@@ -25,22 +29,23 @@ const Home = () => {
             <Spinner />
         )
     } else if (authenticated === 'true') {
-        return <div id='home-screen' className="container d-flex justify-content-between flex-column">
+        console.log(questions);
+        return <>
+         <div id='home-screen' className="d-flex justify-content-between flex-column">
             <div className="text-right">
                 <a className="text-dark" onClick = {logout}>Logout</a>
             </div>
-            <div id="home-body" className="text-dark text-center text-sm flex-grow-1 d-flex flex-column align-items-center mt-5">
-                <div className="text-muted">
-                    Looks like you don't have any questions! Please add few
-                </div>
-                <Link to='/add' className="btn btn-primary btn-sm">Add Questions</Link>
+            {/* Main Body */}
+            <div id="home-body" className="text-dark text-center text-sm flex-grow-1 d-flex flex-column align-items-center">
+                {questions ? (<div>Yaay... there are questions </div>) : <NoQuestions />}
+                
             </div>
+            {/* Footer */}
             <div id="footer">
                 <span className="text-sm">Copyright reserved :P </span>
             </div>
-
-
         </div>
+        </>
     } else {
         return <Redirect to='/login' />
     }
