@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link }  from 'react-router-dom';
 import { auth, db } from '../config/Fire';
+import './styles/myquestions.scss';
 
 export const MyQuestions = () => {
 
@@ -17,7 +18,6 @@ export const MyQuestions = () => {
         });
     }, []);
 
-    console.log("MyQuestions : ", questions);
 
     return <>
         <div className='bg-primary d-flex align-items-center p-2 justify-content-between' style={{height: '50px'}}>
@@ -27,6 +27,12 @@ export const MyQuestions = () => {
         </div>
         <div className='d-flex flex-column justify-content-around'>
             <h4>My Questions</h4>
+            {questions && questions.map((question, index) => {
+              return <div key={index}>
+                <div className="myquestions__question">{question.question}</div>
+                <cite className="myquestions__category">{question.category}</cite>
+              </div>
+            })}
         </div>
     </>
 }
