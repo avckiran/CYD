@@ -7,6 +7,7 @@ import ForgotPass from './screens/ForgotPass';
 import Welcome from './screens/Welcome';
 import Options from './screens/Options';
 import AddQuestion from './screens/AddQuestion';
+import { MyQuestions } from './screens/MyQuestions';
 
 const App = () => {    
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route exact path='/home' component={ Home } />
                 <Route exact path='/forgotPassword' component={ ForgotPass } />
                 <Route exact path='/add' component={ AddQuestion } />
+                <Route exact path='/myquestions' component={MyQuestions} />
             </Switch>
         </Router>
     )
